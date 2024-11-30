@@ -16,32 +16,19 @@ class HomeView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => HomeCubit(),
+    return Builder(builder: (context) {
+      return Scaffold(
+        drawer: const DrawerView(),
+        appBar: AppBar(),
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: screens[state.selectedHomePageIndex],
+            );
+          },
         ),
-        BlocProvider(
-          create: (context) => OrdersCubit(
-        ordersRepo: OrdersRepo(),
-        ordersService: OrdersService(),
-      ),
-        ),
-      ],
-      child: Builder(builder: (context) {
-        return Scaffold(
-          drawer: const DrawerView(),
-          appBar: AppBar(),
-          body: BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: screens[state.selectedHomePageIndex],
-              );
-            },
-          ),
-        );
-      }),
-    );
+      );
+    });
   }
 }

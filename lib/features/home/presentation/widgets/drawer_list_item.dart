@@ -16,11 +16,14 @@ class SelectedDrawerListItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: AppColors.mainColor,
-              ),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: AppColors.mainColor,
+                ),
+          ),
         ),
         leading: SvgPicture.asset(icon),
         trailing: Container(
@@ -49,11 +52,15 @@ class UnSelectedDrawerListItem extends StatelessWidget {
         bottom: 12,
       ),
       child: ListTile(
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
+          ),
         ),
         leading: SvgPicture.asset(icon),
+        trailing: const SizedBox(),
       ),
     );
   }

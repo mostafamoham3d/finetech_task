@@ -1,6 +1,7 @@
 import 'package:finetech_task/features/orders/data/models/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/utils/colors.dart';
 
@@ -43,8 +44,9 @@ class OrderListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('صيدلية', style: Theme.of(context).textTheme.bodyLarge),
-                Text('تم التوصيل',
+                Text('${orderModel.company}',
+                    style: Theme.of(context).textTheme.bodyLarge),
+                Text(orderModel.status!.name,
                     style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
@@ -55,10 +57,15 @@ class OrderListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('15 اكتوبر 2024',
+                Text(
+                    DateFormat.yMMMd().format(
+                      DateTime.parse(
+                        orderModel.registered!,
+                      ),
+                    ),
                     style: Theme.of(context).textTheme.bodySmall),
                 Text(
-                  '25 جنيه',
+                  '${orderModel.price}',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: AppColors.mainColor,
                       ),

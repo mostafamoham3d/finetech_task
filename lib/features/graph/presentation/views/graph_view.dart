@@ -68,7 +68,7 @@ class BarChartSample1State extends State<GraphView> {
           color: AppColors.mainColor,
           borderRadius: BorderRadius.zero,
           width: 22,
-          // borderSide: BorderSide(color: widget.barColor, width: 2.0),
+          borderSide: const BorderSide(color: Colors.grey, width: 2.0),
         ),
       ],
     );
@@ -152,7 +152,7 @@ class BarChartSample1State extends State<GraphView> {
               .toDouble(),
         ),
       ),
-      gridData: const FlGridData(show: false),
+      gridData: const FlGridData(show: true),
     );
   }
 }
